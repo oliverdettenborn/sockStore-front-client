@@ -14,8 +14,7 @@ export default createGlobalStyle`
     width: 100vw;
     min-height: 100vh;
 
-    color: ${Colors.lightGrey};
-
+    background-color: ${Colors.darkBlue};
     display: flex;
     justify-content: center;
     font-family: ${Typography.Roboto}
