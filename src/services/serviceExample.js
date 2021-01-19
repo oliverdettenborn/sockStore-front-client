@@ -1,10 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import api from "../config/api";
 
-class LogOutService {
-  async logOut(token) {
+class ProductsService {
+  async getProduct(token) {
     try {
-      const { data } = await api.delete(`users/log-out`, {
+      const { data } = await api.get(`users/log-out`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -13,10 +13,10 @@ class LogOutService {
         return data;
       }
       return null;
-    } catch {
-      return null;
+    } catch (e) {
+      return e.response.data;
     }
   }
 }
 
-export default new LogOutService();
+export default new ProductsService();
