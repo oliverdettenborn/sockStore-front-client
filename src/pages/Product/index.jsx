@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { useParams, Link } from "react-router-dom";
+import { BiArrowBack } from "react-icons/bi";
 import ProductPageStyles from "./styles";
 import ProductsService from "../../services/productsService";
 import ImageSlideShow from "./imageSlideShow";
@@ -47,7 +47,15 @@ export default function Product() {
 
   return (
     <ProductPageStyles>
-      {product ? (
+      <div className="back">
+        <Link to="/">
+          <span>
+            <BiArrowBack />
+            Home
+          </span>
+        </Link>
+      </div>
+      {product && !loading ? (
         <div className="container">
           <h2>{product.name}</h2>
           <ImageSlideShow images={product.photos} />
@@ -73,7 +81,7 @@ export default function Product() {
         </div>
       ) : (
         (loading && <h1 className="loading"> Carregando...</h1>) || (
-          <h1>Deu ruim</h1>
+          <h1 clasName="error">Produto não encontrado!</h1>
         )
       )}
     </ProductPageStyles>
