@@ -33,11 +33,14 @@ const ProductPageStyles = styled.div`
     padding: 25px 10px;
   }
 
-  .carossel {
+  .slide-container {
     width: 100%;
-    height: 200px;
     margin: 0 0 10px 0;
     background-color: #ccc;
+
+    img {
+      height: 200px;
+    }
   }
 
   .size {

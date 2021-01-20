@@ -17,6 +17,7 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-slideshow-image": "^3.4.3",
     "styled-components": "^5.2.0",
     "vanilla-masker": "^1.2.0"
   },

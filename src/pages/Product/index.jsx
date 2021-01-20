@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductPageStyles from "./styles";
 import ProductsService from "../../services/productsService";
+import ImageSlideShow from "./imageSlideShow";
 
 export default function Product() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ export default function Product() {
       {product ? (
         <div className="container">
           <h2>{product.name}</h2>
-          <div className="carossel" />
+          <ImageSlideShow images={product.images} />
           <b>Descrição do produto</b>
           <p className="description">{product.description}</p>
           <div className="size">
