@@ -4,7 +4,7 @@ import api from "../config/api";
 class ProductsService {
   async getProduct(id) {
     try {
-      const { data } = await api.get(`/products/${id}`);
+      const { data } = await api.get(`/clients/products/${id}`);
       if (data) return data;
       return null;
     } catch (e) {
