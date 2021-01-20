@@ -5,12 +5,28 @@ import Colors from "../../config/colors";
 const ProductPageStyles = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 15px 0 0 0;
   font-family: ${Typography.Poppins};
 
-  .loading {
+  .back {
+    width: 100%;
+    padding: 0 20px;
+    margin: 20px 0;
+    color: white;
+
+    svg{
+      margin: 0 5px 0 0;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .loading, .error {
     text-align: center;
     margin: 30vh 0 0 0;
     color: #fff;
@@ -39,15 +55,14 @@ const ProductPageStyles = styled.div`
   .container {
     width: 100%;
     background: #fff;
-    padding: 20px 20px;
+    padding: 20px;
   }
 
   .slide-container {
     width: 100%;
-    margin: 10px 0;
-
+    margin: 10px auto;
     img {
-      height: 200px;
+      max-width: 100%;
     }
   }
 
@@ -60,7 +75,6 @@ const ProductPageStyles = styled.div`
   .unique {
     margin: 0 0 0 20px;
     width: 30px;
-    margin: 0 0 0 10px;
     padding: 2px;
     font-size: 14px;
     line-height: 20px;
@@ -82,7 +96,8 @@ const ProductPageStyles = styled.div`
     }
 
     button {
-      width: 127px;
+      width: 40%;
+      cursor: pointer;
       font-size: 14px;
       font-family: ${Typography.Poppins};
       line-height: 20px;
@@ -99,6 +114,30 @@ const ProductPageStyles = styled.div`
       box-shadow: 0 0 0 rgba(0, 0, 0, 0.25),
         inset 3px 3px 3px rgba(0, 0, 0, 0.25);
       transform: translate(3px, 3px);
+    }
+  }
+
+  @media (min-width: 800px) {
+    .container,
+    .back {
+      width: 800px;
+      padding: 40px;
+    }
+
+    .back{
+      padding 0px;
+    }
+
+    .description {
+      font-size: 14px;
+    }
+
+    .slide-container {
+      width: 50%;
+      margin: 10px auto;
+      img {
+        max-width: 100%;
+      }
     }
   }
 `;
