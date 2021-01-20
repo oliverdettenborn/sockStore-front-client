@@ -6,7 +6,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
 
   function getProducts() {
-    const request = axios.get("http://localhost:4000/products");
+    const request = axios.get("http://localhost:4000/clients/products");
     request.then((response) => {
       const allProducts = response.data;
       setProducts(allProducts);

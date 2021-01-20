@@ -1,7 +1,6 @@
 const Typography = {
-  RalewatRaleway: "'Raleway', sans-serif",
-  SairaStencil: "'Saira Stencil One', cursive",
-  Roboto: "'Roboto', sans-serif",
+  DancingScript: "Dancing Script, cursive",
+  Poppins: "Poppins, sans-serif",
 };
 
 export default Typography;
