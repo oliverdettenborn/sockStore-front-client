@@ -7,8 +7,8 @@ export default function ImageSlideShow({ images }) {
     <div className="slide-container">
       <Fade autoplay={false}>
         {images.map((i) => (
-          <div className="each-fade">
-            <img src={i} alt="" />
+          <div key={i.id} className="each-fade">
+            <img src={i.photo} alt="" />
           </div>
         ))}
       </Fade>

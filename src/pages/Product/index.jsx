@@ -1,22 +1,56 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import ProductPageStyles from "./styles";
 import ProductsService from "../../services/productsService";
 import ImageSlideShow from "./imageSlideShow";
+import CartContext from "../../context/CartContext";
 
 export default function Product() {
   const { id } = useParams();
+  const { cart, setCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
-  useEffect(() => {
-    const response = ProductsService.getProduct(id);
-    setProduct(response);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(async () => {
+    const response = await ProductsService.getProduct(id);
+    if (response.error) {
+      setProduct(null);
+    } else {
+      setProduct(response);
+    }
+    setLoading(false);
   }, []);
+
+  function addToCart() {
+    let alreadyInCart = false;
+    if (cart.length !== 0) {
+      const newCart = cart;
+      for (let i = 0; i < newCart.length; i += 1) {
+        if (newCart[i].id === parseInt(id, 10)) {
+          newCart[i].quantity += 1;
+          alreadyInCart = true;
+        }
+      }
+      setCart(newCart);
+    } else if (!alreadyInCart) {
+      const newCart = cart;
+      newCart.push({
+        id: product.id,
+        name: product.name,
+        quantity: 1,
+        price: product.price,
+      });
+      setCart(newCart);
+    }
+  }
+
   return (
     <ProductPageStyles>
       {product ? (
         <div className="container">
           <h2>{product.name}</h2>
-          <ImageSlideShow images={product.images} />
+          <ImageSlideShow images={product.photos} />
           <b>Descrição do produto</b>
           <p className="description">{product.description}</p>
           <div className="size">
@@ -28,13 +62,19 @@ export default function Product() {
           <div className="buy">
             <div className="priceContainer">
               <b>Preço</b>
-              <p className="price">{product.price}</p>
+              <p className="price">
+                R$ {product.price.toFixed(2).replace(".", ",")}
+              </p>
             </div>
-            <button type="button">Adicionar ao carrinho</button>
+            <button type="button" onClick={() => addToCart()}>
+              Adicionar ao carrinho
+            </button>
           </div>
         </div>
       ) : (
-        <h1>Deu ruim</h1>
+        (loading && <h1 className="loading"> Carregando...</h1>) || (
+          <h1>Deu ruim</h1>
+        )
       )}
     </ProductPageStyles>
   );
