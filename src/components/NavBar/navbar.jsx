@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -7,12 +7,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
+import CartContext from "../../context/CartContext";
 
 import useStyles from "./styles";
 
 const Navbar = () => {
   const classes = useStyles();
-
+  const { cart, setCart } = useContext(CartContext);
   return (
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -28,7 +29,7 @@ const Navbar = () => {
           <div className={classes.grow} />
           <div className={classes.button}>
             <IconButton aria-label="Mostrar ícones do carrinho" color="inherit">
-              <Badge badgeContent={2} color="secondary">
+              <Badge badgeContent={cart.length} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>

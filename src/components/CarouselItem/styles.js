@@ -6,20 +6,12 @@ export const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
-  background: blue;
-  overflow: scroll;
-  scroll-behavior: smooth;
-  .ion-icon {
-    cursor: pointer;
-    position: fixed;
-  }
 `;
 export const Card = styled.div`
   height: 200px;
   width: 90px;
   border-radius: 10px;
   background: #a8d0d8;
-  cursor: pointer;
   img: {
     width: 100%;
     border-top-right-radius: 10px;
@@ -45,11 +37,9 @@ export const Description = styled.div`
     font-weight: 500;
   }
 `;
-export const Category = styled.h1`
-  color: white;
-  font-family: poppins;
-  text-align: center;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+export const CardsContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
 `;
 export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,

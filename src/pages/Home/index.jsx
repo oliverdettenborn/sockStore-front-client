@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navbar, CarouselGrid } from "../../components";
+import { Navbar, CarouselGrid, Trending } from "../../components";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  function getProducts() {
-    const request = axios.get("http://localhost:4000/clients/products");
+  function getCategories() {
+    const request = axios.get("http://localhost:4000/clients/categories");
     request.then((response) => {
-      const allProducts = response.data;
-      setProducts(allProducts);
-      console.log(products);
+      console.log(response);
+      const allCategories = response.data;
+      setCategories(allCategories);
+      console.log(allCategories);
     });
   }
   useEffect(() => {
-    getProducts();
+    getCategories();
   }, []);
   return (
     <>
       <Navbar />
-      <CarouselGrid products={products} />
+      <Trending categories={categories} />
+      {categories.map((category) => (
+        <CarouselGrid category={category} />
+      ))}
     </>
   );
 }
