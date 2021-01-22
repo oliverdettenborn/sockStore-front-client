@@ -1,25 +1,37 @@
 import React, { useRef } from "react";
+// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Container, Category } from "./styles";
 import CarouselItem from "../CarouselItem";
 
 export default function CarouselGrid({ category }) {
-  const ref = useRef(null);
-  const scroll = (scrollOffset) => {
-    ref.current.scrollLeft += scrollOffset;
-  };
+  // const itemRef = useRef();
+
+  // const scrollRight = () => {
+  //   console.log(itemRef.current.scrollIntoView({ behavior: "smooth" }));
+  //   itemRef.current.scrollIntoView({ behavior: "smooth" });
+  // };
+
+  // const scrollLeft = () => {
+  //   itemRef.current.scrollIntoView({ behavior: "smooth" });
+  // };
+
   return (
     <>
       <Category>{category.name}</Category>
       <Container>
-        <ion-icon
+        {/* <IoIosArrowBack
+          color={Colors.darkBlue}
+          fontSize="4rem"
           name="chevron-back-circle-outline"
-          onClick={() => scroll(-20)}
-        />
+          onClick={scrollLeft}
+        /> */}
         <CarouselItem products={category.products} />
-        <ion-icon
+        {/* <IoIosArrowForward
+          color={Colors.darkBlue}
+          fontSize="4rem"
           name="chevron-forward-circle-outline"
-          onClick={() => scroll(20)}
-        />
+          onClick={scrollRight}
+        /> */}
       </Container>
     </>
   );
