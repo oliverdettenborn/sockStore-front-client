@@ -19,7 +19,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/:id" component={Product} />
       </Switch>
-      <CartMenu />
+      {/* <CartMenu /> */}
     </Router>
   </CartProvider>
 );

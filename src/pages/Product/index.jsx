@@ -46,44 +46,46 @@ export default function Product() {
   }
 
   return (
-    <ProductPageStyles>
-      <div className="back">
-        <Link to="/">
-          <span>
-            <BiArrowBack />
-            Home
-          </span>
-        </Link>
-      </div>
-      {product && !loading ? (
-        <div className="container">
-          <h2>{product.name}</h2>
-          <ImageSlideShow images={product.photos} />
-          <b>Descrição do produto</b>
-          <p className="description">{product.description}</p>
-          <div className="size">
-            <b>Tamanho</b>
-            <button type="button" className="unique">
-              {product.size}
-            </button>
-          </div>
-          <div className="buy">
-            <div className="priceContainer">
-              <b>Preço</b>
-              <p className="price">
-                R$ {product.price.toFixed(2).replace(".", ",")}
-              </p>
-            </div>
-            <button type="button" onClick={() => addToCart()}>
-              Adicionar ao carrinho
-            </button>
-          </div>
+    <>
+      <ProductPageStyles>
+        <div className="back">
+          <Link to="/">
+            <span>
+              <BiArrowBack />
+              Home
+            </span>
+          </Link>
         </div>
-      ) : (
-        (loading && <h1 className="loading"> Carregando...</h1>) || (
-          <h1 clasName="error">Produto não encontrado!</h1>
-        )
-      )}
-    </ProductPageStyles>
+        {product && !loading ? (
+          <div className="container">
+            <h2>{product.name}</h2>
+            <ImageSlideShow images={product.photos} />
+            <b>Descrição do produto</b>
+            <p className="description">{product.description}</p>
+            <div className="size">
+              <b>Tamanho</b>
+              <button type="button" className="unique">
+                {product.size}
+              </button>
+            </div>
+            <div className="buy">
+              <div className="priceContainer">
+                <b>Preço</b>
+                <p className="price">
+                  R$ {product.price.toFixed(2).replace(".", ",")}
+                </p>
+              </div>
+              <button type="button" onClick={() => addToCart()}>
+                Adicionar ao carrinho
+              </button>
+            </div>
+          </div>
+        ) : (
+          (loading && <h1 className="loading"> Carregando...</h1>) || (
+            <h1 clasName="error">Produto não encontrado!</h1>
+          )
+        )}
+      </ProductPageStyles>
+    </>
   );
 }
