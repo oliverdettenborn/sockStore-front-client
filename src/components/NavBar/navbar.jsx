@@ -14,6 +14,7 @@ import useStyles from "./styles";
 const Navbar = () => {
   const classes = useStyles();
   const { cart, setCart } = useContext(CartContext);
+  console.log(setCart);
   return (
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
