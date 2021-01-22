@@ -1,3 +1,7 @@
-export { default as Navbar } from "./NavBar/navbar";
-export { default as CarouselGrid } from "./Carousel/carousel";
-export { default as Trending } from "./Trending/trending";
+import NavBar from "./NavBar";
+import Carousel from "./Carousel";
+import Trending from "./Trending";
+import CartMenu from "./CartMenu";
+import Button from "./Button";
+
+export { CartMenu, NavBar, Carousel, Trending, Button };

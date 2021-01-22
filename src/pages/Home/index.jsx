@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navbar, CarouselGrid, Trending } from "../../components";
+// import {
+//   Carousel,
+//   Trending
+// } from "../../components";
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
 
   function getCategories() {
-    const request = axios.get("http://localhost:4000/clients/categories");
+    const request = axios.get(
+      `${process.env.REACT_APP_API_URL_PROD}/clients/categories`
+    );
     request.then((response) => {
       console.log(response);
       const allCategories = response.data;
@@ -19,11 +24,10 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Navbar />
-      <Trending categories={categories} />
+      {/* <Trending categories={categories} />
       {categories.map((category) => (
-        <CarouselGrid category={category} />
-      ))}
+        <Carousel category={category} />
+      ))} */}
     </>
   );
 }

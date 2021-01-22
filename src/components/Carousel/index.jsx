@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Container, Category } from "./styles";
-import CarouselItem from "../CarouselItem/carouselitem";
+import CarouselItem from "../CarouselItem";
 
 export default function CarouselGrid({ category }) {
   const ref = useRef(null);

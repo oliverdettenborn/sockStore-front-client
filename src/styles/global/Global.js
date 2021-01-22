@@ -13,6 +13,7 @@ export default createGlobalStyle`
   body {
     width: 100vw;
     min-height: 100vh;
+    margin-top: 100px;
 
     background-color: ${Colors.darkBlue};
     display: flex;
