@@ -21,7 +21,7 @@ const App = () => (
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/" component={Home} />
       </Switch>
-      <CartMenu />
+      <CartMenu isClosed={true} setIsclosed={} />
     </Router>
   </CartProvider>
 );

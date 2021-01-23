@@ -8,7 +8,7 @@ import Typography from "../../config/typography";
 import Button from "../Button";
 import ProductItem from "./productItem";
 
-const CartMenu = (isClosed) => {
+const CartMenu = (isClosed, setIsClosed) => {
   const { cart, setCart } = useContext(CartContext);
   const history = useHistory();
 
@@ -39,7 +39,7 @@ const CartMenu = (isClosed) => {
 
   return (
     <Aside isClosed={isClosed}>
-      <ScreenBackground />
+      <ScreenBackground onClick={() => setIsClosed(true)} />
       <ChartContainer>
         <Title>Carrinho</Title>
 
