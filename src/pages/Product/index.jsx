@@ -32,7 +32,7 @@ export default function Product() {
           alreadyInCart = true;
         }
       }
-      setCart(newCart);
+      setCart([...newCart]);
     } else if (!alreadyInCart) {
       const newCart = cart;
       newCart.push({
@@ -41,7 +41,7 @@ export default function Product() {
         quantity: 1,
         price: product.price,
       });
-      setCart(newCart);
+      setCart([...newCart]);
     }
   }
 

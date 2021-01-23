@@ -11,7 +11,6 @@ class HomeService {
       }
       return null;
     } catch (e) {
-      console.log(e);
       return null;
     }
   }
@@ -24,7 +23,6 @@ class HomeService {
       }
       return null;
     } catch (e) {
-      console.log(e);
       return null;
     }
   }

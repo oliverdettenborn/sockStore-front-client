@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
@@ -5,23 +6,62 @@ import CartContext from "../../context/CartContext";
 import Typography from "../../config/typography";
 
 import Button from "../Button";
+import ProductItem from "./productItem";
 
 const CartMenu = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const history = useHistory();
+
+  const arrayPrice = cart.map((p) => parseFloat(p.price * p.quantity));
+  const totalOrder = arrayPrice.reduce((n, total) => n + total, 0);
+
+  function removeItem(product) {
+    const newCart = cart.filter((p) => p.id !== product.id);
+    setCart([...newCart]);
+  }
+
+  function addQuantity(product) {
+    const newQuantity = product.quantity + 1;
+    product.quantity = newQuantity;
+    setCart([...cart]);
+  }
+
+  function removeQuantity(product) {
+    const newQuantity = product.quantity - 1;
+    if (newQuantity > 0) {
+      product.quantity = newQuantity;
+      setCart([...cart]);
+    } else {
+      const newCart = cart.filter((p) => p.id !== product.id);
+      setCart([...newCart]);
+    }
+  }
 
   return (
     <Aside>
       <ScreenBackground />
       <ChartContainer>
         <Title>Carrinho</Title>
-        <Total>TOTAL: R$ 450,00</Total>
+
+        {cart.map((product) => (
+          <ProductItem
+            key={product.id}
+            product={product}
+            addQuantity={addQuantity}
+            removeQuantity={removeQuantity}
+            removeItem={removeItem}
+          />
+        ))}
+
+        <Total>TOTAL: {totalOrder.toFixed(2)}</Total>
         <Button
           onClick={() => history.push("/checkout")}
           width="200px"
           height="50px"
           disabled={cart.length === 0}
-        />
+        >
+          FECHAR PEDIDO
+        </Button>
       </ChartContainer>
     </Aside>
   );
@@ -46,6 +86,9 @@ const ChartContainer = styled.div`
   top: 0;
   right: 0;
   z-index: 999999999999999999999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Title = styled.h4`
@@ -57,7 +100,7 @@ const Title = styled.h4`
   text-align: center;
   color: #000000;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 35px 0;
+  margin: 20px 0;
   letter-spacing: 0.6px;
 `;
 
@@ -70,7 +113,7 @@ const Total = styled.h5`
   text-align: center;
   color: #000000;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 35px 0;
+  margin: 15px 0;
   letter-spacing: 0.6px;
 `;
 
