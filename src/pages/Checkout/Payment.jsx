@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useContext } from "react";
@@ -18,10 +19,18 @@ export default function Payment({ setPage, address, client }) {
   const [success, setSuccess] = useState(false);
 
   async function handleSubmit() {
+    const rawCart = cart;
+
+    rawCart.forEach((element) => {
+      console.log(element.id);
+      element.productId = element.id;
+      delete element.id;
+    });
+
     const response = await PostOrderService.postOrder({
       client,
       address,
-      products: cart,
+      products: rawCart,
     });
 
     if (response === 422) {
