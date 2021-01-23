@@ -46,20 +46,6 @@ export default function Modal({ modalIsOpen, setModalIsOpen }) {
           </button>
         </header>
         <Title>Seu pedido foi concluído com sucesso!</Title>
-        {cart.map((item) => (
-          <ItemCard>
-            <img src="" alt="" />
-            <DescriptionContainer>
-              {item.name}
-              <span>(U)</span>
-              <div>
-                <h1>Qtd: {item.quantity}</h1>
-                <h1 className="price">R${item.price}</h1>
-              </div>
-            </DescriptionContainer>
-          </ItemCard>
-        ))}
-        <Title>TOTAL: R${cart.totalPrice}</Title>
         <CloseButton>FECHAR</CloseButton>
       </Container>
     </ReactModal>
