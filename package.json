@@ -26,6 +26,7 @@
     "react-icons": "^4.1.0",
     "react-input-mask": "^2.0.4",
     "react-leaf-carousel": "^2.0.3",
+    "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-slideshow-image": "^3.4.3",

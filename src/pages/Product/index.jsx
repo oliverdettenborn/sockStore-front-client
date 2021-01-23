@@ -17,7 +17,7 @@ export default function Product() {
     if (response.error) {
       setProduct(null);
     } else {
-      setProduct(response);
+      setProduct({ ...response, quantity: 1 });
     }
     setLoading(false);
   }, []);
@@ -30,6 +30,8 @@ export default function Product() {
     const products = cart.filter((element) => element.id !== product.id);
 
     setCart([...products, product]);
+
+    console.log(cart, "aiaiaiai");
   }
 
   return (

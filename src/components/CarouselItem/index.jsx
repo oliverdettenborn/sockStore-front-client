@@ -7,7 +7,7 @@ export default function CarouselItem({ products }) {
     <>
       <CardsContainer>
         {products.map((product) => (
-          <Card to={`/${product.id}`}>
+          <Card to={`/product/${product.id}`}>
             <img src={product.photos[0].photo} alt={product.name} />
             <Description>
               <h1>{product.name}</h1>

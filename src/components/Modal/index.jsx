@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ReactModal from "react-modal";
 import { AiFillCloseSquare } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Title,
@@ -27,7 +28,7 @@ const customStyles = {
   },
 };
 export default function Modal({ modalIsOpen, setModalIsOpen }) {
-  const { cart, setCart } = useContext(CartContext);
+  const history = useHistory();
   return (
     <ReactModal
       isOpen={modalIsOpen}
@@ -46,7 +47,7 @@ export default function Modal({ modalIsOpen, setModalIsOpen }) {
           </button>
         </header>
         <Title>Seu pedido foi concluído com sucesso!</Title>
-        <CloseButton>FECHAR</CloseButton>
+        <CloseButton onClick={() => history.push("/")}>FECHAR</CloseButton>
       </Container>
     </ReactModal>
   );

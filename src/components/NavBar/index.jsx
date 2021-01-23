@@ -13,10 +13,9 @@ import CartContext from "../../context/CartContext";
 
 import useStyles from "./styles";
 
-const Navbar = ({ setShowCar }) => {
+const Navbar = ({ setShowCart }) => {
   const classes = useStyles();
-  const { cart, setCart } = useContext(CartContext);
-
+  const { cart } = useContext(CartContext);
   return (
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -30,7 +29,7 @@ const Navbar = ({ setShowCar }) => {
             />
           </Typography>
           <div className={classes.grow} />
-          <button onClick={() => setShowCar(true)} className={classes.button}>
+          <button onClick={() => setShowCart(false)} className={classes.button}>
             <IconButton aria-label="Mostrar ícones do carrinho" color="inherit">
               <Badge badgeContent={cart.length} color="secondary">
                 <ShoppingCart />

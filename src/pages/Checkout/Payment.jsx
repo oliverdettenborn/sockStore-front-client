@@ -8,13 +8,14 @@ import FormStyles from "./styles";
 import buttonStyles from "./buttonStyles";
 import PostOrderService from "../../services/postOrderService";
 import CartContext from "../../context/CartContext";
-
+import Modal from "../../components/Modal";
 import CardForm from "./CardForm";
 
 export default function Payment({ setPage, address, client }) {
   const { cart } = useContext(CartContext);
   const buttonClasses = buttonStyles();
   const [card, setCard] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   async function handleSubmit() {
     const response = await PostOrderService.postOrder({
@@ -27,7 +28,7 @@ export default function Payment({ setPage, address, client }) {
       alert("Informações inválidas!");
       setPage(1);
     } else {
-      // abrir modal
+      setSuccess(true);
     }
   }
 
@@ -65,6 +66,7 @@ export default function Payment({ setPage, address, client }) {
           CONCLUIR COMPRA
         </Button>
       </div>
+      <Modal modalIsOpen={success} />
     </FormStyles>
   );
 }

@@ -17,7 +17,7 @@ export default function Trending({ trendingProducts }) {
         <SubTitle>Confira as meias mais vendidas</SubTitle>
         <CardsContainer>
           {trendingProducts.map((product) => (
-            <Card to={`/${product.id}`}>
+            <Card to={`/product/${product.id}`}>
               <img src={product.photos[0].photo} alt={product.name} />
               <Description>
                 <h1>{product.name}</h1>

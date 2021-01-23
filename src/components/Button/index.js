@@ -25,6 +25,7 @@ const StyledButton = styled.button`
   font-family: ${Typography.Poppins};
   font-size: 22px;
   line-height: 28px;
+  font-weight: bold;
   color: #000000;
   margin-top: 10px;
   text-align: center;
