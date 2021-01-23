@@ -25,7 +25,7 @@ export const CardsContainer = styled.div`
   margin: 1rem 0;
 
   display: flex;
-  overflow-x: hidden;
+  overflow-x: scroll;
 
   width: 100%;
   height: 100%;

@@ -13,7 +13,7 @@ import CartContext from "../../context/CartContext";
 
 import useStyles from "./styles";
 
-const Navbar = () => {
+const Navbar = ({ setShowCar }) => {
   const classes = useStyles();
   const { cart, setCart } = useContext(CartContext);
 
@@ -30,10 +30,7 @@ const Navbar = () => {
             />
           </Typography>
           <div className={classes.grow} />
-          <button
-            onClick={() => console.log("aiai")}
-            className={classes.button}
-          >
+          <button onClick={() => setShowCar(true)} className={classes.button}>
             <IconButton aria-label="Mostrar ícones do carrinho" color="inherit">
               <Badge badgeContent={cart.length} color="secondary">
                 <ShoppingCart />

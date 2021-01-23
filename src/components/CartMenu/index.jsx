@@ -75,6 +75,8 @@ const Total = styled.h5`
 `;
 
 const Aside = styled.aside`
+  display: ${(props) => (props.showCar ? "none" : "dafault")};
+
   width: 100vw;
   height: 100vh;
 `;

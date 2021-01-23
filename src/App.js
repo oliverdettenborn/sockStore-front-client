@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ResetCSS from "./styles/global/ResetCSS";
@@ -10,20 +10,23 @@ import Checkout from "./pages/Checkout/index";
 
 import { CartMenu, NavBar } from "./components";
 
-const App = () => (
-  <CartProvider>
-    <Router>
-      <ResetCSS />
-      <GlobalStyle />
-      <NavBar />
-      <Switch>
-        <Route exact path="/product/:id" component={Product} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/" component={Home} />
-      </Switch>
-      {/* <CartMenu /> */}
-    </Router>
-  </CartProvider>
-);
+const App = () => {
+  const [showCar, setShowCar] = useState(false);
+  return (
+    <CartProvider>
+      <Router>
+        <ResetCSS />
+        <GlobalStyle />
+        <NavBar />
+        <Switch>
+          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+        <CartMenu />
+      </Router>
+    </CartProvider>
+  );
+};
 
 export default App;
