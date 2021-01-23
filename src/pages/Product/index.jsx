@@ -23,26 +23,13 @@ export default function Product() {
   }, []);
 
   function addToCart() {
-    let alreadyInCart = false;
-    if (cart.length !== 0) {
-      const newCart = cart;
-      for (let i = 0; i < newCart.length; i += 1) {
-        if (newCart[i].id === parseInt(id, 10)) {
-          newCart[i].quantity += 1;
-          alreadyInCart = true;
-        }
-      }
-      setCart(newCart);
-    } else if (!alreadyInCart) {
-      const newCart = cart;
-      newCart.push({
-        id: product.id,
-        name: product.name,
-        quantity: 1,
-        price: product.price,
-      });
-      setCart(newCart);
+    if (cart.length === 0) {
+      setCart([...cart, product]);
     }
+
+    const products = cart.filter((element) => element.id !== product.id);
+
+    setCart([...products, product]);
   }
 
   return (

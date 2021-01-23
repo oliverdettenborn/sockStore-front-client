@@ -53,6 +53,7 @@ const ProductPageStyles = styled.div`
   }
 
   .container {
+    border-radius: 1rem;
     width: 100%;
     background: #fff;
     padding: 20px;
