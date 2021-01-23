@@ -16,7 +16,7 @@ const ProductPageStyles = styled.div`
     margin: 20px 0;
     color: white;
 
-    svg{
+    svg {
       margin: 0 5px 0 0;
     }
 
@@ -26,7 +26,8 @@ const ProductPageStyles = styled.div`
     }
   }
 
-  .loading, .error {
+  .loading,
+  .error {
     text-align: center;
     margin: 30vh 0 0 0;
     color: #fff;
@@ -124,8 +125,8 @@ const ProductPageStyles = styled.div`
       padding: 40px;
     }
 
-    .back{
-      padding 0px;
+    .back {
+      padding: 0px;
     }
 
     .description {

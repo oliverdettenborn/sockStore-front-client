@@ -6,6 +6,7 @@ import GlobalStyle from "./styles/global/Global";
 import Home from "./pages/Home";
 import Product from "./pages/Product/index";
 import { CartProvider } from "./context/CartContext";
+import Checkout from "./pages/Checkout/index";
 
 import { CartMenu, NavBar } from "./components";
 
@@ -16,8 +17,9 @@ const App = () => (
       <GlobalStyle />
       <NavBar />
       <Switch>
+        <Route exact path="/product/:id" component={Product} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/" component={Home} />
-        <Route exact path="/:id" component={Product} />
       </Switch>
       <CartMenu />
     </Router>
