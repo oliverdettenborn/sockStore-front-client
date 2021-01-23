@@ -8,7 +8,7 @@ import Typography from "../../config/typography";
 import Button from "../Button";
 import ProductItem from "./productItem";
 
-const CartMenu = () => {
+const CartMenu = (isClosed) => {
   const { cart, setCart } = useContext(CartContext);
   const history = useHistory();
 
@@ -38,7 +38,7 @@ const CartMenu = () => {
   }
 
   return (
-    <Aside>
+    <Aside isClosed={isClosed}>
       <ScreenBackground />
       <ChartContainer>
         <Title>Carrinho</Title>
@@ -120,6 +120,7 @@ const Total = styled.h5`
 const Aside = styled.aside`
   width: 100vw;
   height: 100vh;
+  display: ${(props) => (props.isClosed ? "none" : "block")};
 `;
 
 export default CartMenu;
