@@ -3,21 +3,25 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ResetCSS from "./styles/global/ResetCSS";
 import GlobalStyle from "./styles/global/Global";
-import HelloWorld from "./pages/HelloWorld/index";
+import Home from "./pages/Home";
 import Product from "./pages/Product/index";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./pages/Checkout/index";
+
+import { CartMenu, NavBar } from "./components";
 
 const App = () => (
   <CartProvider>
     <Router>
       <ResetCSS />
       <GlobalStyle />
+      <NavBar />
       <Switch>
-        <Route exact path="/" component={HelloWorld} />
         <Route exact path="/product/:id" component={Product} />
         <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/" component={Home} />
       </Switch>
+      {/* <CartMenu /> */}
     </Router>
   </CartProvider>
 );
